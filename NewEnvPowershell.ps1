@@ -12,7 +12,7 @@ if ($State -eq 'create') {
     else{
         Copy-Item -Recurse .\Cloud_DevOps\ .\$EnvName
         (Get-Content .\$EnvName\global_variables.tf) | ForEach-Object {
-        $_.replace('#EnvironmentName#', $EnvName) #.replace('somethingElse1', 'somethingElse2')
+        $_.replace('#EnvironmentName#', $EnvName) #.replace('somethingElse1', 'somethingElse2') placeholder #EnvironmentName# in global variables.tf is replaced by $EnvName variable
         } | Set-Content .\$EnvName\global_variables.tf
         cd .\$EnvName
         terraform init
